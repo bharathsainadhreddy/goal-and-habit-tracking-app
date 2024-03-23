@@ -1,0 +1,37 @@
+/* Register Page Button Style */
+button {
+    padding: 0.5rem 2rem;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    float: right;
+  }
+  
+  button:hover {
+    background-color: #3e8e41;
+  }
+
+  /* Home Page Button Style */
+  .button .icon-with-text {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      border: none;
+      background-color: transparent;
+      color: #676565;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-bottom: 10px;
+  }
+
+  .button-text {
+    margin-left: 10px;
+  }
+
+  .button .icon-with-text:hover {
+    background-color: transparent;
+  }

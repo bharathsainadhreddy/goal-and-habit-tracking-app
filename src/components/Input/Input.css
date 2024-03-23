@@ -1,0 +1,40 @@
+input[type="email"],
+input[type="text"],
+input[type="tel"],
+input[type="password"] {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-size: 1.2rem;
+  width: 95%;
+  height: 2rem;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  border: 1px;
+}
+
+input[type="email"]::placeholder,
+input[type="text"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="password"]::placeholder {
+  color: #a7a7a7;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+input[type="email"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="password"]:focus {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+input[type="email"]:focus::placeholder,
+input[type="text"]:focus::placeholder,
+input[type="tel"]:focus::placeholder,
+input[type="password"]:focus::placeholder {
+  color: #999;
+  font-size: 0.9rem;
+  transform: translateY(-100%);
+}
