@@ -140,14 +140,6 @@ const GoalCard = ({
         />
       </div>
       <hr />
-      {editingGoal && editingGoal._id === goal._id && (
-        <GoalFormModal
-          dialogueBoxTitle="Edit Goal"
-          goal={goal}
-          onSave={handleSave}
-          onClose={() => setEditingGoal(null)}
-        />
-      )}
       <div className="subtasks">
         <table>
           <tbody>

@@ -1,8 +1,8 @@
 const { Goal } = require("../schema/goalCollectionSchema.js");
 
 const createGoalsFromGoalsData = async (req, res) => {
+  console.log("inside - Creating goals...");
   const { title, description, minTimelines, maxTimelines, userName } = req.body;
-
   try {
     const newGoal = new Goal({
       title,
@@ -16,10 +16,13 @@ const createGoalsFromGoalsData = async (req, res) => {
     });
 
     const goalData = await newGoal.save();
+    console.log("Goal Data saved to DB : ");
     res.status(201).json({
-      title: goalData.title,
-      minTimelines: goalData.minTimelines,
-      maxTimelines: goalData.maxTimelines,
+      title,
+      userName,
+      minTimelines,
+      maxTimelines,
+      _id: goalData._id,
       message: "Goal successfully registered",
     });
   } catch (error) {
@@ -29,6 +32,7 @@ const createGoalsFromGoalsData = async (req, res) => {
 };
 
 const updateGoalsWithSubTaskData = async (req, res, next) => {
+  console.log("inside - updateGoalsWithSubTaskData...");
   const {
     title,
     description,
@@ -58,28 +62,30 @@ const updateGoalsWithSubTaskData = async (req, res, next) => {
       deleted: false,
       lastUpdatedAt: new Date(),
     });
-    console.log("Goals-Subtask after update", JSON.stringify(goal.subTasks));
+    console.log("Goals-Subtask updated");
     await goal.save();
     res.status(201).json({
       message: "Goal updated with subtask successfully.",
       goal: goal,
     });
   } catch (error) {
+    console.log("Goals-Subtask - update failed...");
     console.error(error);
     res.status(500).json({ message: "Server error." });
   }
 };
 
 const updateGoalsFromEditReq = async (req, res) => {
+  console.log("inside - Updating goals...");
   const { title, minTimelines, maxTimelines, userName, goalId } = req.body;
   try {
     const goal = await Goal.findOne({
       userName: userName,
-      title: title,
       _id: goalId,
     });
 
     if (!goal) {
+      console.log("No such goal found in the database for updating...");
       return res.status(404).json({ message: "Goal not found." });
     }
 
@@ -87,13 +93,14 @@ const updateGoalsFromEditReq = async (req, res) => {
     goal.minTimelines = minTimelines;
     goal.maxTimelines = maxTimelines;
     goal.lastUpdatedAt = new Date();
-
+    console.log("Updated Goal: " + goal);
     await goal.save();
     res.status(201).json({
       message: "Goal updated with subtask successfully.",
       goal: goal,
     });
   } catch (error) {
+    console.log("Goals - update failed...");
     console.error(error);
     res.status(500).json({ message: "Server error." });
   }
@@ -129,19 +136,21 @@ const updateGoalsFromSubTaskEditReq = async (req, res) => {
         eachSubtaskObj.completed = completed;
       }
     });
-    console.log("goal updated", goal);
+    console.log("Edit-Goals-Subtask updated");
     await goal.save();
     res.status(201).json({
       message: "Goal updated with subtask successfully.",
       goal: goal,
     });
   } catch (error) {
+    console.log("Edit-Goals-Subtask - update failed...");
     console.error(error);
     res.status(500).json({ message: "Server error." });
   }
 };
 
 const displayGoalsOfUser = async (req, res, next) => {
+  console.log("inside displayGoalsOfUser");
   const { userName } = req.body;
 
   try {
@@ -156,6 +165,7 @@ const displayGoalsOfUser = async (req, res, next) => {
       goal: goalsList,
     });
   } catch (error) {
+    console.log("displayGoalsOfUser - failed...");
     console.error(error);
     res.status(500).json({ message: "Server error." });
   }

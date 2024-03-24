@@ -114,6 +114,7 @@ const Goals = () => {
       ...editedGoal,
       action: "editGoalsData",
       goalId: editedGoal._id,
+      userName,
     });
 
     const data = await response.json();
