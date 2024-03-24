@@ -1,7 +1,6 @@
 const { User } = require("../schema/userCollectionSchema");
 const jwt = require("jsonwebtoken");
 
-// Add this function to the User model
 User.prototype.createToken = function () {
   const user = this;
   const token = jwt.sign(

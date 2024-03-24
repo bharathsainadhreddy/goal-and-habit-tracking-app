@@ -56,19 +56,6 @@ const GoalForm = ({ goal, onSave, onClose }) => {
               required
             />
           </div>
-          <div className="toggle-completed">
-            <label htmlFor="toggleCompleted">Completed:</label>
-            <label htmlFor="toggleCompleted" className="switch">
-              <input
-                type="checkbox"
-                id="toggleCompleted"
-                name="toggleCompleted"
-                checked={completed}
-                onChange={toggleCompleted}
-              />
-              <span className="slider round"></span>
-            </label>
-          </div>
           <button onClick={handleSave} className="button-submit">
             Save
           </button>

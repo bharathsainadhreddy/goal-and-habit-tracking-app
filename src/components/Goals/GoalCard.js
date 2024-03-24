@@ -35,14 +35,12 @@ const GoalCard = ({
         reminderDate.setMinutes(reminder[1]);
         const frequency = subtask.frequency;
 
-        // calculate the start and end times for the reminder
         const reminderStart = new Date(reminderDate.getTime());
         reminderStart.setMinutes(reminderStart.getMinutes() - 1);
 
         const reminderEnd = new Date(reminderDate.getTime());
         reminderEnd.setMinutes(reminderEnd.getMinutes());
 
-        // check if the current time is within the start and end times
         if (
           (frequency === "one-a-day" &&
             now.getFullYear() === reminderDate.getFullYear() &&
@@ -101,9 +99,7 @@ const GoalCard = ({
 
         setAlertData([]);
       }
-    }, 60000); // check for alerts every 1 minute
-
-    // clean up interval on component unmount
+    }, 60000);
     return () => clearInterval(intervalId);
   }, [goal.subTasks]);
 
@@ -197,7 +193,7 @@ const GoalCard = ({
       )}
       {editingSubtask && (
         <SubtaskFormEdit
-          subtask={editingSubtask} // Pass the editingSubtask data to the SubtaskFormEdit component
+          subtask={editingSubtask}
           onSave={editSubTask}
           onClose={() => setEditingSubTask(null)}
           goalId={goal}

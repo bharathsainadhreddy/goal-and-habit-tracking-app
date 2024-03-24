@@ -47,11 +47,9 @@ const Register = ({ onRegister }) => {
   const handleSuccessfulRegistration = (response) => {
     console.log("Registered", response);
 
-    // Store the token in localStorage
     localStorage.setItem("token", response.token);
     localStorage.setItem("userName", formData.userName);
 
-    // Call the `onRegister` function to navigate to the goals page
     onRegister();
   };
 

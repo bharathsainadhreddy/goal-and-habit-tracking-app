@@ -88,7 +88,6 @@ const Goals = () => {
       setGoals((prevGoals) => {
         return prevGoals.map((goal) => {
           if (goal._id === editedSubtask.goalId) {
-            // Find the goal that contains the edited subtask
             return {
               ...goal,
               subTasks: goal.subTasks.map((subtask) => {

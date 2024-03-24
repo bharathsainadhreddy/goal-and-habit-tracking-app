@@ -16,7 +16,6 @@ const SubTaskFromEdit = ({ subtask, onSave, onClose, goalId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Send a POST request to the server with the form data
     const formData = new FormData(e.target);
     const data = {
       title: formData.get("title"),
@@ -105,19 +104,6 @@ const SubTaskFromEdit = ({ subtask, onSave, onClose, goalId }) => {
               value={reminder}
               required
             />
-          </div>
-          <div className="toggle-completed">
-            <label htmlFor="toggleCompleted">Completed:</label>
-            <label htmlFor="toggleCompleted" className="switch">
-              <input
-                type="checkbox"
-                id="toggleCompleted"
-                name="toggleCompleted"
-                checked={completed}
-                onChange={toggleCompleted}
-              />
-              <span className="slider round"></span>
-            </label>
           </div>
           <button type="submit" className="button-submit">
             Save

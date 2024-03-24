@@ -20,7 +20,6 @@ const SubTask = ({ onSave, onClose, goalId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Send a POST request to the server with the form data
     const formData = new FormData(e.target);
     const data = {
       title: formData.get("title"),
